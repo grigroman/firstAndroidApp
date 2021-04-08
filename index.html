@@ -23,6 +23,7 @@
                     url: "http://data.fixer.io/api/latest?access_key=52fa193ca856a6b38547cb5621f09859",
                     dataType: 'json'
                 }).done(function (data) {
+                    console.log(data);
                     const euro = 1 / data.rates["USD"];
                     const rate = euro * data.rates["ILS"];
                     var today = new Date();
