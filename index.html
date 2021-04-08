@@ -17,20 +17,40 @@
         <!-- <script src="./currenctScript.js"> -->
         <script type="text/javascript">
 
-        $(document).ready(function() {
-            setInterval(() => {
-            $.ajax({
-                    url: "http://data.fixer.io/api/latest?access_key=52fa193ca856a6b38547cb5621f09859",
-                    dataType: 'json'
-                }).done(function (data) {
-                    console.log(data);
-                    const euro = 1 / data.rates["USD"];
-                    const rate = euro * data.rates["ILS"];
-                    var today = new Date();
-                    var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                    document.getElementById('price-usd').innerHTML = 'Rate: '+ rate+'<br> Date: '+ time;
-                })}, 1000);
-        });
+        setInterval(() =>  {
+            const settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://127.0.0.1:3000/getConvert/",
+                "method": "GET",
+                "headers": {                }
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                var today = new Date();
+                var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                document.getElementById('price-usd').innerHTML = 'Rate: '+ response.data.rate +'<br> Date: '+ time;
+            });}, 1 * 1000);
+
+
+                // $.ajax({
+                //     // url: "http://data.fixer.io/api/latest?access_key=52fa193ca856a6b38547cb5621f09859",
+                //     url: "https://currency13.p.rapidapi.com/convert/1/USD/IL",
+                //     headers:{
+                //         "x-rapidapi-key": "961176919dmsh677c2de8e442ac7p1db8cfjsn71ae5b4cce7c",
+                //         "x-rapidapi-host": "currency13.p.rapidapi.com",
+                //         "useQueryString": true
+                //     },
+                //     dataType: 'json'
+                // }).done(function (data) {
+                //     console.log(data);
+                //     const euro = 1 / data.rates["USD"];
+                //     const rate = euro * data.rates["ILS"];
+                //     var today = new Date();
+                //     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                //     document.getElementById('price-usd').innerHTML = 'Rate: '+ rate+'<br> Date: '+ time;
+                // })
         
             
         </script>
