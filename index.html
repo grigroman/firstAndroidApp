@@ -3,21 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> 
         <title>Currency</title>
         <!-- <script src="jquery-3.5.1.min.js"></script> -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     </head>
 
-    <body style="background-color: red; position: absolute; top: 8px; left: 16px;" >
+    <body style="background-color: blue; position: absolute; top: 8px; left: 16px;" >
         <!-- <h2> Dollar/Shekel Rate: </h2> -->
         <p id="price-usd" >
         </p>
         
         <!-- <script src="./currenctScript.js"> -->
         <script type="text/javascript">
-        setInterval(() => {
+
+        $(document).ready(function() {
+            setInterval(() => {
             $.ajax({
                     url: "http://data.fixer.io/api/latest?access_key=52fa193ca856a6b38547cb5621f09859",
                     dataType: 'json'
@@ -28,9 +29,12 @@
                     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                     document.getElementById('price-usd').innerHTML = 'Rate: '+ rate+'<br> Date: '+ time;
                 })}, 1000);
+        });
+        
             
         </script>
 
     </body>
 
 </html>
+
