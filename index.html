@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Currency</title>
+        
+        <link rel="stylesheet" href="style.css"> 
+    </head>
+
+    <body>
+        <h2> Dollar/Shekel Rate: </h2>
+        <p id="price-usd" >
+        </p>
+        <script>
+            fetch("http://127.0.0.1:3000/getConvert")
+              .then(function (response) {
+                //   response.json().then(data => {
+                //     // do something with your data
+                //     console.log(data)
+                //     });
+                return response.json();
+              })
+              .then(function (myJson) {
+                //   console.log(myJson.data.date);
+                  const textToHTML = '<p> Rate: ' + myJson.data.rate + '<br>' +'Date: ' + myJson.data.date + '</p>';
+                document.getElementById('price-usd').innerHTML = textToHTML;
+              })
+              .catch(function (error) {
+                console.log("Error: " + error);
+              });
+        </script>
+
+    </body>
+
+</html>
+
