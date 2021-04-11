@@ -21,13 +21,13 @@
             const settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "https://f4640ca871bf.ngrok.io/getConvert",
+                "url": "https://5135be722425.ngrok.io/getConvert",
                 "method": "GET",
                 "headers": {                }
             };
 
             $.ajax(settings).done(function (response) {
-                console.log(response);
+                // console.log(response);
                 var today = new Date();
                 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                 document.getElementById('price-usd').innerHTML = 'Rate: '+ response.data.rate +'<br> Date: '+ time;
